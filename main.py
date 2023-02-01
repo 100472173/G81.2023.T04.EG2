@@ -7,7 +7,7 @@ from barcode.writer import ImageWriter
 letters = string.ascii_letters + string.punctuation + string.digits
 shift = 3
 
-
+# Cambios
 def Encode(word):
     encoded = ""
     for letter in word:
