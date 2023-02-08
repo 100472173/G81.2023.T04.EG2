@@ -7,18 +7,16 @@ class OrderManager:
         pass
 
     def ValidateEAN13( self, eAn13 ):
+        """Para examinar si el código indicado cumple las pautas necesarias para que sea del tipo eAn13"""
         # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE GUID
         # RETURN TRUE IF THE GUID IS RIGHT, OR FALSE IN OTHER CASE
         if len(eAn13) > 13:
-            return False
-        pais = eAn13[0:1]
-        if pais != 84:
             return False
         impares = eAn13[0] + eAn13[2] + eAn13[4] + eAn13[6] + eAn13[8] + eAn13[10]
         pares = eAn13[1] + eAn13[3] + eAn13[5] + eAn13[7] + eAn13[9] + eAn13[11]
         suma = impares*3 + pares
         i = 0
-        while i > suma:
+        while i < suma:
             i += 10
         num = i - suma
         if num != eAn13[12]:
