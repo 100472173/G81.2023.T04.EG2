@@ -6,20 +6,23 @@ class OrderManager:
     def __init__(self):
         pass
 
-    def ValidateEAN13( self, eAn13 ):
+    def ValidateEAN13(self, EAN13):
         """Para examinar si el código indicado cumple las pautas necesarias para que sea del tipo eAn13"""
-        # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE GUID
-        # RETURN TRUE IF THE GUID IS RIGHT, OR FALSE IN OTHER CASE
-        if len(eAn13) > 13:
+        # Si la longitud del código es distinta de 13 dígitos, no es de tipo EAN13
+        if len(EAN13) != 13:
             return False
-        impares = eAn13[0] + eAn13[2] + eAn13[4] + eAn13[6] + eAn13[8] + eAn13[10]
-        pares = eAn13[1] + eAn13[3] + eAn13[5] + eAn13[7] + eAn13[9] + eAn13[11]
+        # Los numeros en posiciones impares de los 13 digitos estan ponderados con un 3.
+        # Para comprobar si el codigo es adecuado primero tenemos que realizar la suma de todos los digitos
+        # multiplicándolos además por 3 los que están ponderados
+        impares = EAN13[0] + EAN13[2] + EAN13[4] + EAN13[6] + EAN13[8] + EAN13[10]
+        pares = EAN13[1] + EAN13[3] + EAN13[5] + EAN13[7] + EAN13[9] + EAN13[11]
         suma = impares*3 + pares
-        i = 0
-        while i < suma:
-            i += 10
-        num = i - suma
-        if num != eAn13[12]:
+        # Ahora, tenemos que coger esa suma y hallar la resta del numero múltiplo de 10 igual o superior a
+        # dicho número menos ese número, es decir cuanto falta para llegar del número hasta el múltiplo
+        resto = suma % 10
+        num = 10 - resto
+        # Si el digito 13 del dódigo no es igual al número calculado, el código no cumple el estándar
+        if num != EAN13[12]:
             return False
         return True
 
