@@ -109,7 +109,7 @@ argument-naming-style=snake_case
 # Regular expression matching correct argument names. Overrides argument-
 # naming-style. If left empty, argument names will be checked with the set
 # naming style.
-#argument-rgx=
+#argument-rgx= ^[a-z][a-z,0-9]*[_[a-z][a-z,0-9]*]*$
 
 # Naming style matching correct attribute names.
 attr-naming-style=snake_case
@@ -145,7 +145,7 @@ class-const-naming-style=UPPER_CASE
 # Regular expression matching correct class constant names. Overrides class-
 # const-naming-style. If left empty, class constant names will be checked with
 # the set naming style.
-#class-const-rgx=
+#class-const-rgx= [^[0-9][A-Z]]$
 
 # Naming style matching correct class names.
 class-naming-style=PascalCase
@@ -155,12 +155,12 @@ class-naming-style=PascalCase
 #class-rgx=
 
 # Naming style matching correct constant names.
-const-naming-style=snake_case
+const-naming-style=UPPER_CASE
 
 # Regular expression matching correct constant names. Overrides const-naming-
 # style. If left empty, constant names will be checked with the set naming
 # style.
-#const-rgx=
+#const-rgx= [^[0-9][A-Z]]$
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
