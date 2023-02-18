@@ -7,21 +7,26 @@ class OrderManager:
         pass
 
     def ValidateEAN13(self, EAN13):
-        """Para examinar si el código indicado es del tipo eAn13"""
-        # Si la longitud del código es distinta de 13 dígitos, no es de tipo EAN13
+        """Para examinar si el código indicado es un eAn13"""
+        # Si la longitud del código no es 13, entonces no es de tipo EAN13
         if len(EAN13) != 13:
             return False
-        # Primero sumamos los números de las posiciones impares (menos la número 13)
-        impares = EAN13[0] + EAN13[2] + EAN13[4] + EAN13[6] + EAN13[8] + EAN13[10]
+        # Sumamos los números de las posiciones impares (menos la número 13)
+        impares = 0
+        for number in range(0, 5):
+            impares += EAN13[2*number]
         # Lo mismo pero ahora con todos los de las pares
-        pares = EAN13[1] + EAN13[3] + EAN13[5] + EAN13[7] + EAN13[9] + EAN13[11]
-        # Multiplicamos el resultado de los impares por 3 y lo sumamos a los pares
-        suma = impares*3 + pares
-        # Ahora, tenemos que coger esa suma y hallar la resta del número múltiplo de 10 igual o superior a
-        # dicho número menos ese número, es decir cuanto falta para llegar del número hasta el múltiplo
-        resto = suma % 10
-        num = 10 - resto
-        # Si el dígito 13 del código no es igual al número calculado, el código no cumple el estándar
+        pares = 0
+        for number in range(0, 5):
+            pares += EAN13[2*number + 1]
+        # Sumamos los pares con los impares multiplicados por 3
+        impares = impares*3
+        suma = impares + pares
+        # Ahora, cogemos esa suma y hallamos el resta de 10 menos
+        # el resto de la división suma/10
+        num = 10 - (suma % 10)
+        # Si el dígito 13 del código no es igual al número calculado,
+        # el código no cumple el estándar
         if num != EAN13[12]:
             return False
         return True
