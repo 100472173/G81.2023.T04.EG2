@@ -1,4 +1,4 @@
-from UC3MLogistics import OrderManager
+from uc3m_logistics import orderManager
 import string
 from barcode import EAN13
 from barcode.writer import ImageWriter
@@ -29,18 +29,18 @@ def Decode(word):
     return encoded
 
 def main():
-    mng = OrderManager()
-    res = mng.ReadproductcodefromJSON("test.json")
+    mng = orderManager()
+    res = mng.readProductCodeFromJSON("test.json")
     strRes = res.__str__()
     print(strRes)
     EncodeRes = Encode(strRes)
     print("Encoded Res "+ EncodeRes)
     DecodeRes = Decode(EncodeRes)
     print("Decoded Res: " + DecodeRes)
-    print("Codew: " + res.PRODUCT_CODE)
+    print("Codew: " + res.product_code)
     with open("./barcodeEan13.jpg", 'wb') as f:
         iw = ImageWriter()
-        EAN13(res.PRODUCT_CODE, writer=iw).write(f)
+        EAN13(res.product_code, writer=iw).write(f)
 
 
 if __name__ == "__main__":

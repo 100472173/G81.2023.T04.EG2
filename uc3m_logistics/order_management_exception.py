@@ -1,4 +1,4 @@
-class OrderManagementException(Exception):
+class orderManagementException(Exception):
     def __init__(self, message):
         self.__message = message
         super().__init__(self.message)
@@ -10,4 +10,3 @@ class OrderManagementException(Exception):
     @message.setter
     def message(self,value):
         self.__message = value
-
