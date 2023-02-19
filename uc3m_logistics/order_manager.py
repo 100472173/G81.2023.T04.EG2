@@ -13,11 +13,11 @@ class orderManager:
             return False
         # Sumamos los números de las posiciones impares (menos la número 13)
         impares = 0
-        for number in range(0, 5):
+        for number in range(0, 6):
             impares += int(ean13[2 * number])
         # Lo mismo pero ahora con todos los de las pares
         pares = 0
-        for number in range(0, 5):
+        for number in range(0, 6):
             pares += int(ean13[2 * number + 1])
         # Sumamos los pares con los impares multiplicados por 3
         impares = impares*3
