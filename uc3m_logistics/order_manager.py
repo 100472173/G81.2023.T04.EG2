@@ -14,11 +14,11 @@ class orderManager:
         # Sumamos los números de las posiciones impares (menos la número 13)
         impares = 0
         for number in range(0, 5):
-            impares += ean13[2 * number]
+            impares += int(ean13[2 * number])
         # Lo mismo pero ahora con todos los de las pares
         pares = 0
         for number in range(0, 5):
-            pares += ean13[2 * number + 1]
+            pares += int(ean13[2 * number + 1])
         # Sumamos los pares con los impares multiplicados por 3
         impares = impares*3
         suma = impares + pares
@@ -27,7 +27,7 @@ class orderManager:
         num = 10 - (suma % 10)
         # Si el dígito 13 del código no es igual al número calculado,
         # el código no cumple el estándar
-        if num != ean13[12]:
+        if num != int(ean13[12]):
             return False
         return True
 
@@ -52,6 +52,5 @@ class orderManager:
                                            "Invalid JSON Key") from error
         if not self.validateEAN13(product):
             raise orderManagementException("Invalid product code")
-
         # Close the file
         return req
