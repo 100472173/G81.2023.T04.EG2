@@ -1,46 +1,54 @@
-from uc3m_logistics import orderManager
 import string
 from barcode import EAN13
 from barcode.writer import ImageWriter
+from uc3m_logistics import orderManager
 
-#GLOBAL VARIABLES
-letters = string.ascii_letters + string.punctuation + string.digits
-shift = 3
+
+# GLOBAL VARIABLES
+LETTERS = string.ascii_letters + string.punctuation + string.digits
+SHIFT = 3
 
 # Cambios
-def Encode(word):
+
+
+def encode(word):
+    """..."""
     encoded = ""
     for letter in word:
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (letters.index(letter) + shift) % len(letters)
-            encoded = encoded + letters[x]
+            caracter = (LETTERS.index(letter) + SHIFT) % len(LETTERS)
+            encoded = encoded + LETTERS[caracter]
     return encoded
 
-def Decode(word):
+
+def decode(word):
+    """..."""
     encoded = ""
     for letter in word:
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (letters.index(letter) - shift) % len(letters)
-            encoded = encoded + letters[x]
+            caracter = (LETTERS.index(letter) - SHIFT) % len(LETTERS)
+            encoded = encoded + LETTERS[caracter]
     return encoded
+
 
 def main():
+    """..."""
     mng = orderManager()
     res = mng.readProductCodeFromJSON("test.json")
-    strRes = res.__str__()
-    print(strRes)
-    EncodeRes = Encode(strRes)
-    print("Encoded Res "+ EncodeRes)
-    DecodeRes = Decode(EncodeRes)
-    print("Decoded Res: " + DecodeRes)
+    str_res = res.__str__()
+    print(str_res)
+    encode_res = encode(str_res)
+    print("Encoded Res " + encode_res)
+    decode_res = decode(encode_res)
+    print("Decoded Res: " + decode_res)
     print("Codew: " + res.product_code)
-    with open("./barcodeEan13.jpg", 'wb') as f:
-        iw = ImageWriter()
-        EAN13(res.product_code, writer=iw).write(f)
+    with open("./barcodeEan13.jpg", 'wb') as comodin:
+        image_writer = ImageWriter()
+        EAN13(res.product_code, writer=image_writer).write(comodin)
 
 
 if __name__ == "__main__":
