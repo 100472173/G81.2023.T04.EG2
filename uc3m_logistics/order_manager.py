@@ -11,22 +11,26 @@ class orderManager:
         # Si la longitud del código no es 13, entonces no es de tipo EAN13
         if len(ean13) != 13:
             return False
-        # Sumamos los números de las posiciones impares (menos la número 13)
-        impares = 0
-        for number in range(0, 6):
-            impares += int(ean13[2 * number])
-        # Lo mismo pero ahora con todos los de las pares
+        # Sumamos los números de las posiciones pares (menos la número 13)
         pares = 0
         for number in range(0, 6):
-            pares += int(ean13[2 * number + 1])
-        # Sumamos los pares con los impares multiplicados por 3
+            pares += int(ean13[2 * number])
+        # Lo mismo pero ahora con todos los de las impares
+        impares = 0
+        for number in range(0, 6):
+            impares += int(ean13[2 * number + 1])
+        # Sumamos los pares con los impares multiplicados por 3 (ponderados)
         impares = impares*3
-        suma = impares + pares
-        # Ahora, cogemos esa suma y hallamos el resta de 10 menos
-        # el resto de la división suma/10
-        num = 10 - (suma % 10)
-        # Si el dígito 13 del código no es igual al número calculado,
-        # el código no cumple el estándar
+        suma = pares + impares
+        # Tenemos que comprobar que la diferencia del multiplo de 10 más
+        # cercano a suma por arriba y suma sea igual que el ultimo digito
+        # de ean13
+        # Comprobemos el caso de que esa diferencia sea 0
+        modulo = suma % 10
+        if modulo == 0:
+            return int(ean13[12]) == modulo
+        # Veamos si es distinto de 0
+        num = 10 - modulo
         if num != int(ean13[12]):
             return False
         return True
