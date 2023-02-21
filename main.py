@@ -39,7 +39,7 @@ def decode(word):
 def main():
     """..."""
     mng = orderManager()
-    res = mng.readProductCodeFromJSON("test.json")
+    res = mng.readProductCodeFromJSON("test4.json")
     str_res = str(res)
     print(str_res)
     encode_res = encode(str_res)
@@ -47,7 +47,7 @@ def main():
     decode_res = decode(encode_res)
     print("Decoded Res: " + decode_res)
     print("Codew: " + res.product_code)
-    with open("./barcodeEan13.jpg", 'wb') as comodin:
+    with open("barcodeEan13.jpg", 'wb') as comodin:
         image_writer = ImageWriter()
         EAN13(res.product_code, writer=image_writer).write(comodin)
 
