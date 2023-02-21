@@ -1,3 +1,4 @@
+"""..."""
 import string
 from barcode import EAN13
 from barcode.writer import ImageWriter
@@ -39,7 +40,7 @@ def main():
     """..."""
     mng = orderManager()
     res = mng.readProductCodeFromJSON("test.json")
-    str_res = res.__str__()
+    str_res = str(res)
     print(str_res)
     encode_res = encode(str_res)
     print("Encoded Res " + encode_res)
