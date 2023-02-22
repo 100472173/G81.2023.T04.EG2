@@ -110,7 +110,7 @@ argument-naming-style=snake_case
 # Regular expression matching correct argument names. Overrides argument-
 # naming-style. If left empty, argument names will be checked with the set
 # naming style.
-#argument-rgx= ^[a-z]*$
+argument-rgx= ^[a-z][a-z,0-9]*[_[a-z][a-z,0-9]*]*$
 
 # Naming style matching correct attribute names.
 attr-naming-style=snake_case
@@ -148,7 +148,7 @@ class-const-naming-style=UPPER_CASE
 # Regular expression matching correct class constant names. Overrides class-
 # const-naming-style. If left empty, class constant names will be checked with
 # the set naming style.
-#class-const-rgx= ^[A-Z]*$
+class-const-rgx= [^[0-9][A-Z]]$
 
 # Regla 5
 # Naming style matching correct class names.
@@ -165,7 +165,7 @@ const-naming-style=UPPER_CASE
 # Regular expression matching correct constant names. Overrides const-naming-
 # style. If left empty, constant names will be checked with the set naming
 # style.
-#const-rgx= ^[A-Z].*$
+const-rgx= ^[A-Z].*$
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
@@ -242,7 +242,7 @@ variable-naming-style= snake_case
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style. If left empty, variable names will be checked with the set
 # naming style.
-#variable-rgx= ^[a-z].*$
+variable-rgx= ^[a-z][a-z,0-9]*[_[a-z][a-z,0-9]*]*$
 
 
 [CLASSES]
@@ -285,7 +285,6 @@ ignored-parents=
 # Maximum number of arguments for function / method.
 max-args=10
 
-# Regla 8
 # Maximum number of attributes for a class (see R0902).
 max-attributes=10
 
@@ -305,7 +304,7 @@ max-parents=2
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=20
 
-#Regla 14
+# Regla 14
 # Maximum number of return / yield for function / method body.
 max-returns=10
 
@@ -342,7 +341,6 @@ indent-string='    '
 # Maximum number of characters on a single line.
 max-line-length=79
 
-#Regla 2
 # Maximum number of lines in a module.
 max-module-lines=2500
 
