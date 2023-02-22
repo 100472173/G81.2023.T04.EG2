@@ -132,6 +132,7 @@ bad-names=foo,
 # they will always be refused
 bad-names-rgxs=
 
+# Regla 7
 # Naming style matching correct class attribute names.
 class-attribute-naming-style=snake_case
 
@@ -149,6 +150,7 @@ class-const-naming-style=UPPER_CASE
 # the set naming style.
 #class-const-rgx= ^[A-Z]*$
 
+# Regla 5
 # Naming style matching correct class names.
 class-naming-style=camelCase
 
@@ -159,15 +161,17 @@ class-naming-style=camelCase
 # Naming style matching correct constant names.
 const-naming-style=UPPER_CASE
 
+# Regla 3
 # Regular expression matching correct constant names. Overrides const-naming-
 # style. If left empty, constant names will be checked with the set naming
 # style.
-#const-rgx= [^[0-9][A-Z]]$
+#const-rgx= ^[A-Z].*$
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
 docstring-min-length=-1
 
+# Regla 11
 # Naming style matching correct function names.
 function-naming-style=camelCase
 
@@ -199,6 +203,7 @@ inlinevar-naming-style=any
 # with the set naming style.
 #inlinevar-rgx=
 
+# Regla 9
 # Naming style matching correct method names.
 method-naming-style=camelCase
 
@@ -276,6 +281,7 @@ exclude-too-few-public-methods=
 # R0901)
 ignored-parents=
 
+# Regla 13
 # Maximum number of arguments for function / method.
 max-args=10
 
@@ -332,6 +338,7 @@ indent-after-paren=4
 # tab).
 indent-string='    '
 
+# Regla 1
 # Maximum number of characters on a single line.
 max-line-length=79
 
