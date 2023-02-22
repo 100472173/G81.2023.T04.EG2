@@ -1,7 +1,7 @@
 # G81.2023.T04.EG2
 El directorio raíz incluye:
-- .gitignore, .pylintrc
-- main
+- .gitignore, .pylintrc, requirements.txt, readme.md
+- main.py
 - tests.json (6)
 - imágenes de los códigos de barras EAN13 correctos
 - imágenes de los warnings de pylint antes de las modificaciones y la imagen sin warnings
