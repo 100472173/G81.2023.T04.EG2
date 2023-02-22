@@ -106,10 +106,11 @@ unsafe-load-any-extension=no
 # Naming style matching correct argument names.
 argument-naming-style=snake_case
 
+# Regla 12
 # Regular expression matching correct argument names. Overrides argument-
 # naming-style. If left empty, argument names will be checked with the set
 # naming style.
-#argument-rgx= ^[a-z][a-z,0-9]*[_[a-z][a-z,0-9]*]*$
+#argument-rgx= ^[a-z]*$
 
 # Naming style matching correct attribute names.
 attr-naming-style=snake_case
@@ -142,10 +143,11 @@ class-attribute-naming-style=snake_case
 # Naming style matching correct class constant names.
 class-const-naming-style=UPPER_CASE
 
+# Regla 6
 # Regular expression matching correct class constant names. Overrides class-
 # const-naming-style. If left empty, class constant names will be checked with
 # the set naming style.
-#class-const-rgx= [^[0-9][A-Z]]$
+#class-const-rgx= ^[A-Z]*$
 
 # Naming style matching correct class names.
 class-naming-style=camelCase
@@ -231,10 +233,11 @@ property-classes=abc.abstractproperty
 # Naming style matching correct variable names.
 variable-naming-style= snake_case
 
+#Regla 4
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style. If left empty, variable names will be checked with the set
 # naming style.
-#variable-rgx= ^[a-z][a-z,0-9]*[_[a-z][a-z,0-9]*]*$
+#variable-rgx= ^[a-z].*$
 
 
 [CLASSES]
@@ -276,6 +279,7 @@ ignored-parents=
 # Maximum number of arguments for function / method.
 max-args=10
 
+# Regla 8
 # Maximum number of attributes for a class (see R0902).
 max-attributes=10
 
@@ -288,12 +292,14 @@ max-branches=12
 # Maximum number of locals for function / method body.
 max-locals=15
 
+# Regla 10
 # Maximum number of parents for a class (see R0901).
 max-parents=2
 
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=20
 
+#Regla 14
 # Maximum number of return / yield for function / method body.
 max-returns=10
 
@@ -329,6 +335,7 @@ indent-string='    '
 # Maximum number of characters on a single line.
 max-line-length=79
 
+#Regla 2
 # Maximum number of lines in a module.
 max-module-lines=2500
 
